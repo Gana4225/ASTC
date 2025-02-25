@@ -1,0 +1,105 @@
+{% extends 'clg/master.html' %}
+{% load static %}
+{% block title %}<title>Admissions & Programs - ASTC</title>{% endblock %}
+{% block content %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'clg/css/adminssionprocess.css' %}">
+{% endblock %}
+
+<div class="container">
+    <!-- Toggle Button for Side Panel (Mobile) -->
+    <button class="toggle-btn" onclick="toggleSidePanel()">☰ Gallery</button>
+
+    <!-- Side Panel -->
+    <aside class="side-panel" id="sidePanel">
+        <button class="close-btn" onclick="toggleSidePanel()">✖</button>
+        <h2 id="cg">Campus Gallery</h2>
+        <div class="image-container">
+            <ul>
+                <li><img src="{% static 'clg/images/oldcollege.jpg' %}" alt="Campus View 1"></li>
+                <li><img src="{% static 'clg/images/coll.jpg' %}" alt="Campus View 2"></li>
+                <li><img src="{% static 'clg/images/lab.jpg' %}" alt="Engineering Lab"></li>
+                <li><img src="{% static 'clg/images/library.jpg' %}" alt="Library"></li>
+                <li><img src="{% static 'clg/images/classroom.jpg' %}" alt="Classroom"></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main>
+        <header class="hero">
+            <h1>Avanthi's St. Theressa Institute of Engineering & Technology (ASTC)</h1>
+            <p>Affiliated with JNTU-GV | EAMCET Code: ASTC</p>
+        </header>
+
+        <section class="admissions">
+            <h2>Admission Procedure</h2>
+            <p>Admissions at ASTC follow a structured process to ensure quality education and the best talent intake.</p>
+            <ul>
+                <li><strong>Undergraduate (B.Tech):</strong> Candidates must have completed 10+2 with Physics, Chemistry, and Mathematics (PCM) with a minimum of 45% marks. Admission is through AP EAMCET counseling.</li>
+                <li><strong>Postgraduate (M.Tech):</strong> A relevant B.Tech degree with qualifying marks in GATE or AP PGECET is required for admission.</li>
+                <li><strong>Diploma Courses:</strong> Candidates must have completed 10th standard, and admission is based on AP POLYCET rank.</li>
+                <li><strong>Management Quota:</strong> A limited number of seats are available for direct admission based on academic performance.</li>
+            </ul>
+        </section>
+
+        <section class="programs">
+            <h2>Programs Offered</h2>
+            <h3>Undergraduate Courses (B.Tech)</h3>
+            <ul>
+                <li>Computer Science and Engineering (CSE)</li>
+                <li>Artificial Intelligence & Machine Learning (AI & ML)</li>
+                <li>Electronics and Communication Engineering (ECE)</li>
+                <li>Electrical and Electronics Engineering (EEE)</li>
+                <li>Mechanical Engineering (ME)</li>
+            </ul>
+
+            <h3>Postgraduate Courses (M.Tech)</h3>
+            <ul>
+                <li>Computer Science and Engineering</li>
+                <li>VLSI Design</li>
+                <li>Power Electronics</li>
+                <li>Thermal Engineering</li>
+            </ul>
+
+            <h3>Diploma Courses</h3>
+            <ul>
+                <li>Diploma in Computer Engineering</li>
+                <li>Diploma in Electronics and Communication Engineering</li>
+                <li>Diploma in Electrical and Electronics Engineering</li>
+                <li>Diploma in Mechanical Engineering</li>
+            </ul>
+        </section>
+    </main>
+</div>
+
+<script>
+    let lastScrollTop = 0;
+    const toggleBtn = document.querySelector(".toggle-btn");
+
+    window.addEventListener("scroll", function () {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down - hide the button
+            toggleBtn.classList.add("hidden");
+        } else {
+            // Scrolling up - show the button
+            toggleBtn.classList.remove("hidden");
+        }
+
+        lastScrollTop = scrollTop;
+    });
+
+    function toggleSidePanel() {
+        let sidePanel = document.getElementById("sidePanel");
+        sidePanel.classList.toggle("active");
+    }
+</script>
+
+<style>
+    body{
+    margin:0px;
+    }
+</style>
+
+{% endblock %}

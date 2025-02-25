@@ -1,0 +1,39 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration</title>
+    <link rel="stylesheet" href="{% static 'clg/css/login.css' %}">
+</head>
+<body>
+
+    <div class="registration-container">
+        <h2>Create Your Account</h2>
+        <form action="{% url 'register' %}" method="POST" onsubmit="return disableButton()">
+            {% csrf_token %}
+            <input type="text" class="input-field" name="username" placeholder="Username" required><br>
+            <input type="text" class="input-field" name="rollnumber" placeholder="Roll Number" required><br>
+            <input type="text" class="input-field" name="mobilenumber" placeholder="Mobile Number" required><br>
+            <input type="email" class="input-field" name="email" placeholder="Email" required><br>
+            <input type="password" class="input-field" name="password" placeholder="Password" required><br>
+
+            <br><button type="submit" class="submit-btn" id="registerBtn">Register</button>
+        </form>
+        <div class="login-link">
+            Already have an account? <a href="{% url 'login' %}">Login here</a>
+        </div>
+    </div>
+
+<script>
+    function disableButton() {
+        var registerBtn = document.getElementById('registerBtn');
+        registerBtn.disabled = true;
+        registerBtn.innerText = 'Please Wait...'; // Optional: Change text
+        return true; // Allow the form to submit
+    }
+</script>
+
+</body>
+</html>

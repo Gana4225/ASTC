@@ -1,0 +1,94 @@
+{% extends 'clg/master.html' %}
+{% load static %}
+{% block title %}<title>Profile</title>{% endblock %}
+{% block content %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'clg/css/stdprofile.css' %}">
+{% endblock %}
+
+<body style="margin:0px">
+<br>
+    <div class="student-profile-card-container">
+        <!-- Profile Card -->
+        <div class="student-profile-card">
+
+            <!-- Profile Header -->
+            <div class="student-profile-header">
+
+
+
+                <a href="{{ student.image.url }}" id="studentImageLink">
+    <img src="{% if student.image %}{{ student.image.url }}{% else %}{{ STATIC_URL }}default-profile.png{% endif %}"
+         alt="Student Image" id="studentImage" style="cursor: pointer;">
+</a>
+
+<!-- JavaScript to Enable Double Click -->
+<script>
+    document.getElementById("studentImage").addEventListener("dblclick", function(event) {
+        event.preventDefault(); // Prevent the default single-click behavior
+        window.open(document.getElementById("studentImageLink").href, "_blank");
+    });
+
+    // Prevent single-click from working
+    document.getElementById("studentImage").addEventListener("click", function(event) {
+        event.preventDefault(); // Stop single click from opening the image
+    });
+</script>
+
+
+
+
+                <h2>{{ student.name }}</h2>
+
+                <!-- Gear Icon -->
+                <a href="{%  url 'update_profile' %}" class="settings-icon">
+
+                    <img src="{% static 'clg/images/gear.png' %}" alt="Settings">
+
+                </a>
+
+            </div>
+
+            <!-- Profile Details -->
+            <div class="student-profile-details">
+                <p><span class="label">Roll Number</span><span class="value"><strong>: {{ student.roll_number }}</strong></span></p>
+                <p><span class="label">Department</span><span class="value"><strong>: {{ student.department }}</strong></span></p>
+                <p><span class="label">Regulation</span><span class="value"><strong>: {{ student.regulation }}</strong></span></p>
+                <p><span class="label">Email</span><span class="value"><a style="text-decoration:none" href="mailto:{{ student.email }}"><strong>: {{ student.email }}</strong></a></span></p>
+                <p><span class="label">Mobile Number</span><span class="value"><strong>: {{ student.mobile_number }}</strong></span></p>
+                <p><span class="label">User Name</span><span class="value"><strong>: {{ a }}</strong></span></p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <style>
+        .student-profile-card {
+            position: relative;
+
+        }
+        .settings-icon {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            width: 25px;
+            height: 25px;
+        }
+        .settings-icon img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+
+
+
+
+
+
+</body>
+{% endblock %}

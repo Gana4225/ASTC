@@ -1,0 +1,105 @@
+{% extends 'clg/master.html' %}
+{% load static %}
+{% block title %}<title>Departments</title>{% endblock %}
+{% block content %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'clg/css/departments.css' %}">
+{% endblock %}
+
+<title>Departments</title>
+
+<div class="container">
+    <div class="department">
+        <img src="{% static 'clg/images/faculty/aiml.jpeg' %}"
+             alt="Ampolu Krishna Veeni" class="faculty-img">
+        <h2>CSE (AI & ML)</h2><br>
+        <p><strong>HOD:</strong> Ampolu Krishna Veeni, M.Tech.</p><br>
+        <p><strong>About:</strong> Our CSE (AI & ML) department is at the forefront of innovation, providing students with skills to excel in AI and machine learning applications.</p><br>
+        <p><strong>Vision:</strong> Striving to be a center of excellence, nurturing software professionals with technical and innovative skills.</p><br>
+        <p><strong>Mission:</strong> Imparting top-quality education and keeping up with industry advancements.</p><br>
+        <h3>Faculty</h3>
+        <table class="faculty-table">
+            <tr>
+                <th>Name</th>
+                <th>Designation</th>
+                <th>Department</th>
+            </tr>
+            <tr>
+                <td class="highlight">Ampolu Krishna Veeni</td>
+                <td>HOD, Asst. Professor</td>
+                <td>CSE (AI & ML)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="department">
+         <img src="{% static 'clg/images/faculty/cse.jpeg' %}"
+              alt="M. Uma Mahesh" class="faculty-img">
+        <h2>Computer Science Engineering(CSE)</h2><br>
+        <p><strong>HOD:</strong> Mr. M. Uma Mahesh, M.Tech.</p><br>
+        <p><strong>About:</strong> Our CSE department nurtures students to become experts in computing, networking, and software development.</p><br>
+        <p><strong>Vision:</strong> To become a leading department producing skilled software professionals.</p><br>
+        <p><strong>Mission:</strong> Offering quality education and innovative learning experiences.</p><br>
+        <h3>Faculty</h3>
+        <table class="faculty-table">
+            <tr>
+                <th>Name</th>
+                <th>Designation</th>
+                <th>Department</th>
+            </tr>
+            <tr>
+                <td class="highlight">Mr. M. Uma Mahesh</td>
+                <td>HOD, Professor</td>
+                <td>Computer Science Engineering</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="department">
+        <img src="{% static 'clg/images/faculty/co2.jpg' %}"
+             alt="B. Venkata Ramana" class="faculty-img">
+        <h2>Electrical & Electronic Engineering(EEE)</h2><br>
+        <p><strong>HOD:</strong> Mr. B. Venkata Ramana, B.Tech., M.Tech.(Ph.D)</p><br>
+        <p><strong>About:</strong> Our EEE department provides a strong foundation in electrical engineering while integrating interdisciplinary knowledge.</p><br>
+        <p><strong>Vision:</strong> To emphasize design, innovation, and real-world applications.</p><br>
+        <p><strong>Mission:</strong> Preparing students for professional excellence in Electrical Engineering.</p><br>
+        <h3>Faculty</h3>
+        <table class="faculty-table">
+            <tr>
+                <th>Name</th>
+                <th>Designation</th>
+                <th>Department</th>
+            </tr>
+            <tr>
+                <td class="highlight">Mr. B. Venkata Ramana</td>
+                <td>HOD, Professor</td>
+                <td>Electrical & Electronic Engineering</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="department">
+         <img src="{% static 'clg/images/faculty/ece.jpeg' %}"
+              alt="NC Sekhar" class="faculty-img">
+        <h2>Electronics & Communication Engineering(ECE)</h2><br>
+        <p><strong>HOD:</strong> Mr. NC Sekhar, M.Tech.</p><br>
+        <p><strong>About:</strong> The ECE department emphasizes research and hands-on learning to create future innovators in communication technology.</p><br>
+        <p><strong>Vision:</strong> To become a pioneer in research and technical education.</p><br>
+        <p><strong>Mission:</strong> Providing excellence in education and research.</p><br>
+        <h3>Faculty</h3>
+        <table class="faculty-table">
+            <tr>
+                <th>Name</th>
+                <th>Designation</th>
+                <th>Department</th>
+            </tr>
+            <tr>
+                <td class="highlight">Mr. NC Sekhar</td>
+                <td>HOD, Professor</td>
+                <td>Electronics & Communication Engineering</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

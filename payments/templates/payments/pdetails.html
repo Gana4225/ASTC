@@ -1,0 +1,67 @@
+{% extends 'clg/master.html' %}
+{% load static %}
+
+{% block title %}
+<title>Checkout</title>
+{% endblock %}
+
+{% block content %}
+{% block extract_css %}
+<link rel="stylesheet" href="{% static 'payments/css/pdetails.css' %}">
+{% endblock %}
+
+<form id="paymentForm" action="{% url 'payments:pay' %}" method="POST">
+    {% csrf_token %}
+    <div class="payment-container">
+        <h2>Payment Checkout</h2>
+        <div class="payment-table">
+            <div class="row"><span class="label">Student Name</span><span class="colon">:</span><span class="value">{{ sdata.name }}</span></div>
+            <div class="row"><span class="label">Roll Number</span><span class="colon">:</span><span class="value">{{ sdata.roll_number }}</span></div>
+            <div class="row"><span class="label">Department</span><span class="colon">:</span><span class="value">{{ sdata.department }}</span></div>
+            <div class="row"><span class="label">Regulation</span><span class="colon">:</span><span class="value">{{ sdata.regulation }}</span></div>
+            <div class="row"><span class="label">Paying</span><span class="colon">:</span><span class="value">₹{{ p }}</span></div>
+            <div class="row"><span class="label">Purpose</span><span class="colon">:</span><span class="value">{{ pur }}</span></div>
+        </div>
+
+        <br>
+
+        <!-- Hidden Fields for Payment Verification -->
+        <input type="hidden" name="payment_id" id="payment_id">
+        <input type="hidden" name="order_id" id="order_id">
+        <input type="hidden" name="utr" id="utr">
+
+        <!-- Proceed to Payment Button -->
+        <button type="button" class="payment-btn" id="customPayButton">Proceed To Payment</button>
+    </div>
+</form>
+
+<!-- Razorpay Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    document.getElementById("customPayButton").addEventListener("click", function () {
+        var options = {
+            "key": "rzp_live_vFZrNfs1Qu9cx4",  // Your Razorpay Key
+            "amount": "{{ payment.amount }}",  // Amount in paise (backend should pass `amount * 100`)
+            "currency": "INR",
+            "order_id": "{{ payment.order_id }}",  // Corrected Order ID reference
+            "name": "ASTC",
+            "description": "{{ pur }}",  // Corrected Purpose reference
+            "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'payments/images/terracotta_icon.jpeg' %}",
+            "theme": { "color": "lightgreen" },
+            "handler": function (response) {
+                // Store response values in hidden fields
+                document.getElementById("payment_id").value = response.razorpay_payment_id;
+                document.getElementById("order_id").value = response.razorpay_order_id;
+                document.getElementById("utr").value = response.razorpay_signature;
+
+                // Submit form
+                document.getElementById("paymentForm").submit();
+            }
+        };
+
+        var rzp = new Razorpay(options);
+        rzp.open();
+    });
+</script>
+
+{% endblock %}

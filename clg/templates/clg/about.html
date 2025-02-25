@@ -1,0 +1,103 @@
+{% extends 'clg/master.html' %}
+{% block title %}<title>About</title>{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h1>About Us</h1>
+    <h2>Avanthi's St. Theressa Institute</h2>
+
+    <section>
+        <p>
+            <span class="highlight">Avanthi's St. Theressa Institute of Engineering and Technology</span>, established in 2001, is a private engineering college located in <span class="highlight">Garividi, Vizianagaram District, Andhra Pradesh</span>. The institute is spread over 26 acres with a built-up area of 80,000 square feet, offering a conducive environment for academic excellence.
+        </p>
+    </section>
+
+    <section>
+        <h3>Academic Programs</h3>
+        <p>
+            The college offers undergraduate and postgraduate programs in various engineering disciplines, including:
+        </p>
+        <ul>
+            <li>Computer Science Engineering</li>
+            <li>Electrical Engineering</li>
+            <li>Electronics & Communication Engineering</li>
+            <li>Mechanical Engineering</li>
+            <li>Power Engineering</li>
+            <li>VLSI Design</li>
+        </ul>
+        <p>
+            These programs are approved by the <span class="highlight">All India Council for Technical Education (AICTE)</span>, ensuring adherence to quality standards in technical education.
+        </p>
+    </section>
+
+    <section>
+        <h3>Facilities and Infrastructure</h3>
+        <ul>
+            <li>State-of-the-art laboratories for practical learning</li>
+            <li>Well-equipped library with digital resources</li>
+            <li>Spacious and well-ventilated classrooms</li>
+            <li>Advanced computing center with high-speed internet</li>
+            <li>Sports complex and recreational areas</li>
+            <li>Separate hostel facilities for boys and girls</li>
+            <li>Transportation facilities for students and staff</li>
+            <li>Cafeteria serving hygienic food</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Faculty and Research</h3>
+        <p>
+            The faculty members are highly experienced and dedicated to providing quality education. Research and development are actively encouraged, with various funded projects and collaborations with reputed industries and institutions.
+        </p>
+    </section>
+
+    <section>
+        <h3>Placement and Career Support</h3>
+        <p>
+            The institute has a dedicated placement cell that provides career guidance and training. Top recruiters include TCS, Infosys, Wipro, and other leading companies. Students undergo soft skills training, aptitude tests, and mock interviews to enhance their employability.
+        </p>
+    </section>
+</div>
+
+<style>
+    .container {
+        max-width: 90%;
+        margin: 30px auto;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2, section h3 {
+        text-align: center;
+        color: #003366;
+    }
+
+   section p, ul {
+        font-size: 16px;
+        color: #555;
+        text-align: justify;
+    }
+
+    .highlight {
+        font-weight: bold;
+        color: #0066cc;
+    }
+
+    ul {
+        padding-left: 40px;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            max-width: 100%;
+            padding: 15px;
+        }
+
+        h1, h2, h3 {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+{% endblock %}

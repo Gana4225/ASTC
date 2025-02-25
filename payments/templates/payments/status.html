@@ -1,0 +1,13 @@
+{% block title %}<title>Payment Selection</title>{% endblock %}
+{% block content %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'payments/css/pay.css' %}">
+{% endblock %}
+
+<h1>successfully received payments</h1>
+pay id : {{pid}}
+order id : {{oid}}
+utr : {{utr}}
+
+{% endblock %}

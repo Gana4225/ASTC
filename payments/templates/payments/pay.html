@@ -1,0 +1,21 @@
+{% extends 'clg/master.html' %}
+{% load static %}
+{% block title %}<title>Payment Selection</title>{% endblock %}
+{% block content %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'payments/css/pay.css' %}">
+{% endblock %}
+
+<form action="{% url 'payments:cnfm' %}" method="post">
+    <div class="container">
+        <h2>Select Payment Type</h2>
+        <select id="paymentType" name="type">
+            <option value=1>JNTUGV Fee</option>
+            <option value=2>College Fee</option>
+            <option value=3>Exam Fee</option>
+            <option value=4>Special Fee</option>
+        </select>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+{% endblock %}

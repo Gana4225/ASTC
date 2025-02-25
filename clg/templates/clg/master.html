@@ -1,0 +1,275 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'clg/css/master.css' %}">
+    {% block extra_css %}{% endblock %}
+    {% block title %}<title></title>{% endblock %}
+     <link rel="icon" type="image/png" href="{% static 'clg/images/ASTClogo.jpg' %}">
+</head>
+<body style="margin:0px">
+    <nav class="navbar">
+        <a href="{% url 'dashboard' %}" class="logo" style="color:white"> ASTC </a>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <div class="nav-links">
+                <a href="{% url 'realhome' %}">Home</a>
+                <a href="{% url 'dashboard' %}">Dashboard</a>
+                <a href="#services">Services</a>
+                <a href="{% url 'contact' %}">Contact</a>
+                <a href="{% url 'admissionprocess' %}">Admissions</a>
+                <a href="{% url 'departments' %}">Departments</a>
+                <a href="{% url 'about' %}">About</a>
+                {% if user %}
+                <a href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                <a href="{% url 'login' %}">LogIn</a>
+                {% endif %}
+
+            </div>
+            <!-- Time Display Div inside navbar -->
+        <div id="timeDisplay" class="time-display" style="display: none;"></div>
+    </nav>
+
+    <script>
+
+            function updateTime() {
+                var options = { timeZone: 'Asia/Kolkata', hour12: true };
+                var currentTime = new Date().toLocaleString('en-IN', options);
+                document.getElementById('timeDisplay').innerHTML = currentTime;
+            }
+
+            function checkTimeDisplay() {
+                var timeDisplay = document.getElementById('timeDisplay');
+                if (window.innerWidth > 1124 || window.innerWidth < 768) {
+                    timeDisplay.style.display = 'block';
+                    updateTime();
+                } else {
+                    timeDisplay.style.display = 'none';
+                }
+            }
+
+            window.addEventListener('resize', checkTimeDisplay);
+            window.addEventListener('load', checkTimeDisplay);
+            setInterval(updateTime, 1000);
+
+            function toggleMenu() {
+                const navLinks = document.querySelector('.nav-links');
+                navLinks.classList.toggle('active');
+            }
+    </script>
+
+{% block content %}
+
+    <link rel="stylesheet" href="{% static 'clg/css/realhome.css' %}">
+    <title>Avanthi's St. Theresa College</title>
+
+    <div class="hero-container">
+        <header class="hero">
+            <img src="{% static 'clg/images/stt.png' %}" alt="Avanthi's St. Theresa College">
+        </header>
+    </div>
+
+<section class="intro">
+    <p>
+        Welcome to <strong>Avanthi's St. Theresa College</strong>, a reputed institution in Garividi, Vizianagaram,
+        known for academic excellence and holistic development. Our commitment to education, innovation, and
+        student growth makes us a leading choice for higher studies. Explore our vibrant campus, modern facilities,
+        and rich learning environment that nurtures future leaders.
+    </p>
+</section>
+
+<!-- Image Section -->
+<div class="image-section">
+    <img src="{% static 'clg/images/oldcollege.jpg' %}" alt="Avanthi's St. Theresa College"><br>
+</div>
+    <!-- Additional 6-line content between images -->
+    <div class="mid-content">
+        <p>
+            Established with a vision of excellence, Avanthi's St. Theresa College provides a dynamic learning
+            environment where students excel academically and personally.
+        </p>
+        <p>
+            Our college offers a blend of tradition and innovation, ensuring students receive top-notch education
+            while embracing new-age learning methodologies.
+        </p>
+        <p>
+            With experienced faculty and well-equipped infrastructure, we aim to nurture talent and foster
+            leadership qualities among students.
+        </p>
+        <p>
+            The institution promotes research, community service, and co-curricular activities to build
+            a well-rounded academic experience.
+        </p>
+        <p>
+            Various student-centric initiatives and skill development programs prepare graduates for global
+            challenges and career success.
+        </p>
+        <p>
+            Our commitment to quality education has shaped numerous professionals who continue to contribute
+            meaningfully to society.
+        </p>
+    </div>
+
+<div class="image-section">
+    <img src="{% static 'clg/images/coll.jpg' %}" alt="Campus View">
+</div>
+
+
+<section class="content">
+    <p>
+        Avanthi's St. Theresa College, established in Garividi, Vizianagaram, is a premier institution committed
+        to providing quality education to students. The college has a strong academic foundation, modern
+        infrastructure, and a vibrant campus life. Over the years, it has become a beacon of knowledge and
+        professional excellence, shaping thousands of students into skilled professionals and responsible citizens.
+    </p>
+
+    <p>
+        The institution is well-known for its commitment to academic rigor, research, and extracurricular
+        excellence. The faculty members at Avanthi's St. Theresa College are highly qualified and dedicated
+        to nurturing young minds with a holistic approach. The college provides a wide range of undergraduate
+        and postgraduate programs, ensuring that students get exposure to diverse fields of study.
+    </p>
+
+    <p>
+        The campus is equipped with state-of-the-art facilities, including modern classrooms, a well-stocked
+        library, research labs, and sports complexes. Students have access to various student clubs, cultural
+        activities, and leadership programs that help them grow both personally and professionally.
+    </p>
+
+    <p>
+        Beyond academics, the college emphasizes the importance of community engagement and social responsibility.
+        Various outreach programs, awareness drives, and social initiatives are undertaken by students and faculty
+        members to contribute to the development of society.
+    </p>
+
+    <p>
+        The alumni of Avanthi's St. Theresa College have excelled in various fields, holding prestigious
+        positions in industries, academia, and entrepreneurship. Their success stories are a testament to
+        the college's dedication to excellence.
+    </p>
+</section>
+
+{% endblock %}
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <h3>About Us</h3>
+            <p>Your trusted source for quality services. We strive to provide the best customer experience.</p>
+        </div>
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="{% url 'dashboard' %}">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                 <li><a href="{% url 'admissionprocess' %}">Admissions</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                {% if user %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="footer-social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/sttheressaIET" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/astc.garividi?igsh=MTZxMXh4ZDFpb3Q0bA==" target="_blank">Instagram</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 ST.THERESSA INSTITUTE OF ENGINEERING & TECHNOLOGY. All Rights Reserved.</p>
+    </div>
+</footer>
+
+
+
+
+
+
+
+<style>
+    .time-display {
+        font-size: 14px;
+        color: #ffffff;
+        font-weight: bold;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+
+
+      /* Footer Styles */
+.footer {
+    background-color: #343a40; /* Dark background */
+    color: #ffffff; /* White text */
+    padding: 40px 20px 20px;
+    font-family: Arial, sans-serif;
+}
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.footer-container div {
+    flex: 1;
+    min-width: 200px;
+}
+.footer-about p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-links li {
+    margin: 8px 0;
+}
+.footer-links a {
+    color: #4caf50; /* Green link color */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.footer-links a:hover {
+    color: #ffffff;
+}
+.footer-social .social-icons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.footer-social a {
+    color: #4caf50;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+.footer-social a:hover {
+    color: #ffffff;
+}
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    border-top: 1px solid #4caf50;
+    padding-top: 10px;
+}
+
+
+
+/* this correct */
+
+</style>
+
+</body>
+</html>
