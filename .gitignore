@@ -13,8 +13,7 @@ settings_local.py
 
 
 # Static files and media uploads
-/static/
-/media/
+
 
 # Virtual environments
 venv/
