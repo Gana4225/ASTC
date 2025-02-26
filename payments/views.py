@@ -5,6 +5,11 @@ from .models import Payments, SpecialFee
 from clg.models import *
 
 
+def payments(amount):
+    client = razorpay.Client(auth=("rzp_test_F4KAIVewl3a2UP", "hPfWC0HrQlkaxHtaWtSUllrF"))
+    payment = client.order.create({'amount': amount, 'currency': 'INR', 'payment_capture': '1'})
+    return payment
+
 
 def home(request):
     return render(request, 'payments/pay.html')
@@ -18,31 +23,29 @@ def cnfm(request):
         rdata = Re.objects.get(user_name=user)
         sdata = Student.objects.get(roll_number=rdata.roll_number.roll_number)
         if fee_type == 1:
-            p = amount = 1 * 100
+            p = amount = data.jntugv_fee * 100
             p = p//100
             purpose = "JNTUGV FEE"
-            client = razorpay.Client(auth=("rzp_live_vFZrNfs1Qu9cx4", "B8zpbYSMCee3yDJarwOuyqH8"))
-            payment = client.order.create({'amount': amount, 'currency': 'INR', 'payment_capture': '1'})
+            payments(amount)
             return render(request, "payments/pdetails.html",
-                          {"payment":payment,"sdata":sdata, "pur":purpose, "p":p})
+                          {"payment":payments,"sdata":sdata, "pur":purpose, "p":p, "amount":amount})
 
         if fee_type == 2:
             p = amount = data.college_fee * 100
             p = p // 100
             purpose = "COLLEGE FEE"
-            client = razorpay.Client(auth=("rzp_live_vFZrNfs1Qu9cx4", "B8zpbYSMCee3yDJarwOuyqH8"))
-            payment = client.order.create({'amount': amount, 'currency': 'INR', 'payment_capture': '1'})
+            payments(amount)
             return render(request, "payments/pdetails.html",
-                          {"payment":payment,"sdata":sdata, "pur":purpose, "p":p})
+                          {"payment": payments, "sdata": sdata, "pur": purpose, "p": p, "amount": amount})
+
 
         if fee_type == 3:
             p = amount = data.exam_fee * 100
             p = p // 100
             purpose = "EXAM FEE"
-            client = razorpay.Client(auth=("rzp_live_vFZrNfs1Qu9cx4", "B8zpbYSMCee3yDJarwOuyqH8"))
-            payment = client.order.create({'amount': amount, 'currency': 'INR', 'payment_capture': '1'})
+            payments(amount)
             return render(request, "payments/pdetails.html",
-                          {"payment":payment,"sdata":sdata, "pur":purpose, "p":p})
+                          {"payment": payments, "sdata": sdata, "pur": purpose, "p": p, "amount": amount})
 
         spedata = SpecialFee.objects.get(id=1)
 
@@ -51,29 +54,46 @@ def cnfm(request):
             p = amount = spedata.spe_fee * 100
             p = p // 100
             purpose = spedata.spe_for
-            client = razorpay.Client(auth=("rzp_live_vFZrNfs1Qu9cx4", "B8zpbYSMCee3yDJarwOuyqH8"))
-            payment = client.order.create({'amount': amount, 'currency': 'INR', 'payment_capture': '1'})
+            payments(amount)
             return render(request, "payments/pdetails.html",
-                          {"payment":payment,"sdata":sdata, "pur":purpose, "p":p})
+                          {"payment": payments, "sdata": sdata, "pur": purpose, "p": p, "amount": amount})
 
-        return HttpResponse("hello")
+        return HttpResponse("Invalid request")
 
-    return HttpResponse("gvhjbkn")
+    return HttpResponse("Invalid request please try again")
 
 @csrf_exempt
 def pay(request):
    if request.method == "POST":
        pid = request.POST.get('payment_id')
-       oid = request.POST.get('order_id')
-       utr = request.POST.get('utr')
-       client = razorpay.Client(auth=("rzp_live_vFZrNfs1Qu9cx4", "B8zpbYSMCee3yDJarwOuyqH8"))
+       client = razorpay.Client(auth=("rzp_test_F4KAIVewl3a2UP", "hPfWC0HrQlkaxHtaWtSUllrF"))
        payment_status = client.payment.fetch(pid)
+       oid = payment_status['description']
        ccc = payment_status["acquirer_data"]
-       print(ccc['rrn'])
        rrn = payment_status.get("acquirer_data", {}).get("rrn", "RRN Not Available")
-       print(rrn)
-       print(payment_status)
-       context = {"pid":pid,
-                  "oid":oid,
-                  "utr":utr}
-       return render(request, "payments/status.html", context)
+       context = {"pid":pid, "oid":oid, "utr":rrn, "amount":payment_status['amount']//100,}
+       if payment_status["status"] == "captured":
+
+           return render(request, "payments/status.html", context)
+
+       else:
+
+           capture = client.payment.capture(pid, payment_status["amount"])
+
+           return render(request, "payments/status.html", context)
+
+
+
+
+
+"""
+
+{'id': 'pay_Q0FTYfOONscc3h', 'entity': 'payment', 'amount': 80000, 'currency': 'INR', 'status':
+ 'captured', 'order_id': None, 'invoice_id': None, 'international': False, 'method': 'upi', 'am
+ount_refunded': 0, 'refund_status': None, 'captured': True, 'description': 'EXAM FEE', 'card_id
+': None, 'bank': None, 'wallet': None, 'vpa': 'sdf@ybl', 'email': 'ch.gana@gmail.com', 'contact
+': '+917898282609', 'notes': [], 'fee': 1888, 'tax': 288, 'error_code': None, 'error_descriptio
+n': None, 'error_source': None, 'error_step': None, 'error_reason': None, 'acquirer_data': {'rr
+n': '812258928960', 'upi_transaction_id': '93824430602AC90E232E6D06F19C4EEA'}, 'created_at': 1740553153, 'upi': {'vpa': 'sdf@ybl'}}
+
+"""

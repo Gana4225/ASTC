@@ -18,7 +18,8 @@ urlpatterns = [
     path('update_profile/',update_profile,name='update_profile'),
     path("contact/", contact, name="contact"),
     path("addmissionprocess/", admission, name="admissionprocess"),
-    path("departments/", departments, name="departments")
+    path("departments/", departments, name="departments"),
+    path("aadmin/", ladmin, name="aadmin"),
 
 ]
 

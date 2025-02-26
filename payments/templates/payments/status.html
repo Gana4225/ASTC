@@ -1,13 +1,89 @@
-{% block title %}<title>Payment Selection</title>{% endblock %}
+{% extends "clg/master.html" %}
+{% block title %}<title>Payment Successful</title>{% endblock %}
 {% block content %}
 {% load static %}
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'payments/css/pay.css' %}">
 {% endblock %}
 
-<h1>successfully received payments</h1>
-pay id : {{pid}}
-order id : {{oid}}
-utr : {{utr}}
+<div class="payment-container">
+    <h1>Payment Successfully Received</h1>
+
+    <div class="payment-details">
+        <p><span>Amount:</span> ₹{{ amount }}</p>
+        <p><span>Payment ID:</span> {{ pid }}</p>
+        <p><span>Order Name:</span> {{ oid }}</p>
+        <p><span>UTR:</span> {{ utr }}</p>
+    </div>
+
+    <a href="{% url 'payments:select1' %}" class="btn-home">Pay Other Fee</a>
+</div>
+
+
+
+<style>
+
+    /* payments/css/pay.css */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    text-align: center;
+
+}
+
+.payment-container {
+    background: white;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #28a745;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.payment-details {
+    text-align: left;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.payment-details p {
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+.payment-details span {
+    font-weight: bold;
+    color: #555;
+}
+
+.btn-home {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s ease-in-out;
+}
+
+.btn-home:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+
+</style>
 
 {% endblock %}

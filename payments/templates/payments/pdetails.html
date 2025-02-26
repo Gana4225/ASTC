@@ -30,6 +30,7 @@
         <input type="hidden" name="order_id" id="order_id">
         <input type="hidden" name="utr" id="utr">
 
+
         <!-- Proceed to Payment Button -->
         <button type="button" class="payment-btn" id="customPayButton">Proceed To Payment</button>
     </div>
@@ -40,8 +41,8 @@
 <script>
     document.getElementById("customPayButton").addEventListener("click", function () {
         var options = {
-            "key": "rzp_live_vFZrNfs1Qu9cx4",  // Your Razorpay Key
-            "amount": "{{ payment.amount }}",  // Amount in paise (backend should pass `amount * 100`)
+            "key": "rzp_test_F4KAIVewl3a2UP",  // Your Razorpay Key
+            "amount": "{{ amount }}",  // Amount in paise (backend should pass `amount * 100`)
             "currency": "INR",
             "order_id": "{{ payment.order_id }}",  // Corrected Order ID reference
             "name": "ASTC",
@@ -53,6 +54,7 @@
                 document.getElementById("payment_id").value = response.razorpay_payment_id;
                 document.getElementById("order_id").value = response.razorpay_order_id;
                 document.getElementById("utr").value = response.razorpay_signature;
+
 
                 // Submit form
                 document.getElementById("paymentForm").submit();

@@ -102,7 +102,7 @@ def pay(request):
 
     if not check_user_logged_in(request):
 
-        return redirect('home')
+        return redirect('realhome')
 
     return redirect('second/')
 
@@ -120,9 +120,7 @@ def stdprofile(request):
     try:
         a = request.session.get('user_id')
         b = Re.objects.get(user_name=a)
-        print(b)
         c = Student.objects.get(roll_number=b.roll_number.roll_number)
-        print(c.image)
 
         if not c.image:
             c.image = None  # You can set a default image URL if needed
@@ -136,7 +134,7 @@ def stdprofile(request):
 def update_profile(request):
     if not check_user_logged_in(request):
 
-        return redirect('home')
+        return redirect('realhome')
 
     return updatepf(request)
 def dd(request):
@@ -153,3 +151,10 @@ def admission(request):
 
 def departments(request):
     return render(request, "clg/departments.html")
+
+def ladmin(request):
+    if not check_user_logged_in(request):
+
+        return redirect('realhome')
+
+    return HttpResponse("Admin page")

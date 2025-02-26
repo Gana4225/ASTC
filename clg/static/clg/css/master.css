@@ -25,13 +25,13 @@
     flex-direction: column;
     position: absolute;
     top: 60px;
-    right: 20px;
+    right: 10px;
     width: 200px;
     background-color: #343a40;
     border-radius: 8px;
     padding: 10px 0;
     z-index: 1001;
-    max-height: 300px; /* Set max height for scroll effect */
+    max-height: 200px; /* Set max height for scroll effect */
     overflow-y: auto; /* Enable vertical scrolling */
 }
 
@@ -49,7 +49,7 @@
     border-radius: 4px;
     transition: background-color 0.3s;
     display: block;
-    text-align: center;
+    text-align: left;
 }
 
 .navbar .nav-links a:hover {
