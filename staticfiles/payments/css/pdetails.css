@@ -1,0 +1,147 @@
+  /* Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* Container */
+        .payment-container {
+            max-width: 650px;
+            margin: 50px auto;
+            padding: 25px;
+            background: linear-gradient(135deg, #e3f2fd, #ffffff);
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Heading */
+        h2 {
+            color: #2C3E50;
+            font-size: 26px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Table-like layout */
+        .payment-table {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 93%;
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            transition: 0.3s ease-in-out;
+        }
+
+        .row {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            padding: 12px 0;
+            font-weight: 400;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .row:last-child {
+            border-bottom: none;
+        }
+
+        .label, .value {
+            width: 40%;
+            text-align: left;
+            color: #333;
+        }
+
+        .colon {
+            width: 10%;
+            text-align: center;
+            font-weight: bold;
+            color: #2C3E50;
+        }
+
+        .label {
+            font-weight: 600;
+            color: #007bff;
+        }
+
+        .value {
+            color: #444;
+            font-weight: 500;
+        }
+
+        /* Hover Effects */
+        .payment-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .payment-table:hover {
+            background: #eaf4fc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .payment-container {
+                max-width: 90%;
+                padding: 20px;
+            }
+
+            .row {
+                font-size: 16px;
+                flex-direction: column;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .label, .value, .colon {
+                width: 100%;
+                text-align: center;
+            }
+
+            .colon {
+                display: none;
+            }
+        }
+
+
+         .payment-btn {
+        display: inline-block;
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0px 4px 8px rgba(0, 123, 255, 0.3);
+    }
+
+    /* Hover Effect */
+    .payment-btn:hover {
+        background: linear-gradient(135deg, #0056b3, #003c80);
+        box-shadow: 0px 6px 12px rgba(0, 123, 255, 0.5);
+        transform: translateY(-2px);
+    }
+
+    /* Click Effect */
+    .payment-btn:active {
+        transform: scale(0.98);
+        box-shadow: 0px 2px 6px rgba(0, 123, 255, 0.4);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .payment-btn {
+            font-size: 16px;
+            padding: 10px 20px;
+        }
+    }

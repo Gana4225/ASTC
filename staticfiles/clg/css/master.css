@@ -6,8 +6,8 @@
     padding: 10px 20px;
     background-color: #343a40; /* Dark gray background */
     color: #ffffff; /* White text */
-    position: relative; /* Ensure navbar is positioned relative */
-    z-index: 1000; /* Ensure navbar stays above everything */
+    position: relative;
+    z-index: 1000;
 }
 
 /* Logo */
@@ -19,32 +19,28 @@
     text-decoration: none;
 }
 
-/* Navbar links */
+/* Navbar links - Hidden by default */
 .navbar .nav-links {
-    display: flex;
-    gap: 20px;
-    z-index: 1001; /* Ensure the dropdown stays above other content */
-}
-
-/* Navbar links - when active */
-.navbar .nav-links.active {
-    display: flex;
+    display: none; /* Hidden initially */
     flex-direction: column;
     position: absolute;
-    top: 60px; /* Place it under navbar */
+    top: 60px;
     right: 20px;
     width: 200px;
     background-color: #343a40;
     border-radius: 8px;
+    padding: 10px 0;
+    z-index: 1001;
+    max-height: 300px; /* Set max height for scroll effect */
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 
-/* Navbar links - for large screens */
-.navbar .nav-links {
-    display: flex; /* Horizontal layout for large screens */
-    gap: 20px;
+/* Navbar links - when active (visible) */
+.navbar .nav-links.active {
+    display: flex;
 }
 
-/* Navbar links */
+/* Navbar links styling */
 .navbar .nav-links a {
     color: #ffffff;
     text-decoration: none;
@@ -52,6 +48,8 @@
     padding: 8px 12px;
     border-radius: 4px;
     transition: background-color 0.3s;
+    display: block;
+    text-align: center;
 }
 
 .navbar .nav-links a:hover {
@@ -59,32 +57,29 @@
     color: #ffffff;
 }
 
-/* Mobile menu button */
+/* Toggle menu (☰) - Always visible on all screens */
 .navbar .menu-toggle {
-    display: none;
     font-size: 24px;
     cursor: pointer;
+    color: white;
+    position: absolute;
+    right: 20px;
+    z-index: 1002;
 }
 
-/* Responsive styles */
-@media screen and (max-width: 768px) {
-    .navbar .menu-toggle {
-        display: block;
-    }
+/* Scrollbar styles for nav links */
+.navbar .nav-links::-webkit-scrollbar {
+    width: 5px;
+}
 
+.navbar .nav-links::-webkit-scrollbar-thumb {
+    background: #4caf50;
+    border-radius: 5px;
+}
+
+/* Ensure navbar links remain hidden by default on all screens */
+@media screen and (min-width: 769px) {
     .navbar .nav-links {
-        display: none; /* Hide links by default */
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        width: 200px;
-        background-color: #343a40;
-        border-radius: 8px;
-        flex-direction: column; /* Stack links vertically */
-        gap: 10px;
-    }
-
-    .navbar .nav-links.active {
-        display: flex; /* Show links when active */
+        display: none;
     }
 }

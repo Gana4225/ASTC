@@ -12,7 +12,7 @@ urlpatterns = [
     path('logout/',clogout,name='logout'),
     path('dashboard/',dashboard,name='dashboard'),
     path('about/',about,name='about'),
-    path('payments',pay,name='pay'),
+    path('payments/',pay,name='pay'),
     path('otp/', otp, name='otp'),
     path('profile/',stdprofile, name='profile'),
     path('update_profile/',update_profile,name='update_profile'),
@@ -20,4 +20,9 @@ urlpatterns = [
     path("addmissionprocess/", admission, name="admissionprocess"),
     path("departments/", departments, name="departments")
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
