@@ -122,9 +122,11 @@ def stdprofile(request):
         b = Re.objects.get(user_name=a)
         print(b)
         c = Student.objects.get(roll_number=b.roll_number.roll_number)
+        print(c.image)
 
         if not c.image:
             c.image = None  # You can set a default image URL if needed
+
 
         return render(request, 'clg/stdprofile.html', {'student': c, 'a': a})
     except Exception as e:
