@@ -1,0 +1,81 @@
+{% extends "clg/master.html" %}
+{% load static %}
+{% block content %}
+{% block title %}<title>Research | Avanthi's St. Theressa Institute of Engineering & Technology</title>{% endblock %}
+{% block extract_css %}<link rel="stylesheet" href="{% static 'clg/css/research.css' %}">{% endblock %}
+
+
+    <header>
+        <h1>Avanthi's St. Theressa Institute of Engineering & Technology</h1>
+        <p>Fostering Innovation Through Research & Development</p>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Departments</a>
+        <a href="#">Research</a>
+        <a href="#">Publications</a>
+        <a href="#">Contact</a>
+
+    </nav>
+
+    <div class="container">
+        <!-- Research Overview -->
+        <section>
+            <h2 class="section-title">🔬 Research Overview</h2>
+            <div class="card">
+                <p>At Avanthi's St. Theressa Institute of Engineering & Technology, research and innovation are at the core of our academic excellence. Our institution promotes a **multidisciplinary approach**, encouraging students and faculty to explore cutting-edge technologies and solve real-world challenges. With state-of-the-art **research labs, funding opportunities, and industry collaborations**, we are shaping the future of technology and science.</p>
+            </div>
+        </section>
+
+        <!-- Research Departments -->
+        <section>
+            <h2 class="section-title">🏛️ Research Departments & Centers</h2>
+            <div class="card">
+                <h3>💻 Computer Science & AI</h3>
+                <p>Exploring AI, Machine Learning, Cybersecurity, and Data Science to innovate in intelligent computing.</p>
+            </div>
+            <div class="card">
+                <h3>📡 Electronics & Communication</h3>
+                <p>Working on VLSI Design, Wireless Networks, IoT, and Semiconductor Technologies.</p>
+            </div>
+            <div class="card">
+                <h3>⚡ Electrical & Renewable Energy</h3>
+                <p>Developing Smart Grids, Electric Vehicles, and Sustainable Power Solutions.</p>
+            </div>
+            <div class="card">
+                <h3>🏗️ Civil & Structural Engineering</h3>
+                <p>Researching Green Building Technologies, Earthquake-Resistant Structures, and Urban Planning.</p>
+            </div>
+        </section>
+
+        <!-- Faculty Research -->
+        <section>
+            <h2 class="section-title">👨‍🏫 Faculty Research & Achievements</h2>
+            <div class="card">
+                <h3>Dr. Govinda Rao Potnuru</h3>
+                <p>Published **33+ research papers** in reputed international journals and holds **1 patent** in engineering solutions.</p>
+            </div>
+            <div class="card">
+                <h3>Dr. Ramesh Kumar</h3>
+                <p>Leading AI & ML research with projects funded by **DST (Department of Science & Technology, India).**</p>
+            </div>
+        </section>
+
+        <!-- Student Research -->
+        <section>
+            <h2 class="section-title">🎓 Student Research & Innovation Hub</h2>
+            <div class="card">
+                <p>Our students have won multiple **Hackathons, National-Level Project Competitions**, and received grants for research from **AICTE, DST, and UGC.**</p>
+            </div>
+        </section>
+
+        <!-- Publications & Collaborations -->
+        <section>
+            <h2 class="section-title">📖 Research Publications & Collaborations</h2>
+            <div class="card">
+                <p>Our research scholars and faculty actively publish in **IEEE, Springer, Elsevier, and Scopus-indexed journals.** We also collaborate with **IITs, NITs, and leading industries** for innovation-driven research.</p>
+            </div>
+        </section>
+    </div>
+{% endblock %}

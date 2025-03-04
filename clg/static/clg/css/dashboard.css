@@ -9,6 +9,8 @@
     background-color: #ffffff;
     box-shadow: 0 11px 20px rgba(0, 0, 0, 0.4);
     border-radius: 12px;
+    margin:auto;
+    max-width:400px;
     padding: 20px;
     text-align: center;
     transform: scale(1);
@@ -16,7 +18,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 150px; /* Fixed height to make all cards equal */
+    height: 200px; /* Fixed height to make all cards equal */
 }
 
 .card:hover {

@@ -86,7 +86,7 @@ def reg(request):
 
 def dashboard(request):
     if not check_user_logged_in(request):
-        return redirect('realhome')
+        return redirect('login')
 
     return render(request, 'clg/dashboard.html')
 
@@ -148,9 +148,16 @@ def departments(request):
 
 def placements(request):
     data = Placements.objects.all()
-    print(data)
     return render(request, "clg/placements.html", {"data":data})
 
 
 def activities(request):
     return render(request, "clg/activities.html")
+
+
+def research(request):
+    return render(request,"clg/researches.html")
+
+
+def amenities(request):
+    return render(request, "clg/amenities.html")

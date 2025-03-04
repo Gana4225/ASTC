@@ -22,6 +22,8 @@ urlpatterns = [
     path("departments/", departments, name="departments"),
     path("placements/",placements,name="placements"),
     path("activities/",activities,name="activities"),
+    path("research/",research,name="research"),
+    path("amenities/",amenities,name="amenities"),
 
 
 ]

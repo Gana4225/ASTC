@@ -1,0 +1,112 @@
+{% extends "clg/master.html" %}
+{% load static %}
+{% block content %}
+{% block title %}<title>College Amenities</title>{% endblock %}
+{% block extract_css %}<link rel="stylesheet" href="{% static 'clg/css/amenities.css' %}">{% endblock %}
+
+    <div class="container">
+        <h1>College Amenities</h1>
+        <div class="grid">
+            <div class="card">
+                <div class="carousel">
+                    <img src="{% static 'clg/images/amenities/lib1.jpg' %}" alt="Academic Facilities" class="active">
+                    <img src="{% static 'clg/images/amenities/lib2.jpg' %}" alt="Academic Facilities">
+                    <img src="{% static 'clg/images/amenities/lib3.jpg' %}" alt="Academic Facilities">
+                    <img src="{% static 'clg/images/amenities/lib4.jpg' %}" alt="Academic Facilities">
+                    <img src="{% static 'clg/images/amenities/smartclass.jpg' %}" alt="Academic Facilities">
+
+                    <button class="nav-btn prev">&#10094;</button>
+                    <button class="nav-btn next">&#10095;</button>
+                </div>
+                <h2>Academic Facilities</h2>
+                <p>Our college offers a state-of-the-art library with thousands of books, e-books, and research papers to help students excel in their academics. Smart classrooms equipped with projectors and digital boards make learning interactive. Advanced science, engineering, and computer labs ensure hands-on learning experiences.</p>
+            </div>
+
+            <div class="card">
+                <div class="carousel">
+                    <img src="{% static 'clg/images/amenities/hostel.jpg' %}" alt="Student Support Services" class="active">
+                    <img src="{% static 'clg/images/amenities/hostel2.jpg' %}" alt="Academic Facilities">
+                    <img src="{% static 'clg/images/amenities/hostel2.jpg' %}" alt="Academic Facilities">
+                    <button class="nav-btn prev">&#10094;</button>
+                    <button class="nav-btn next">&#10095;</button>
+                </div>
+                <h2>Student Support Services</h2>
+                                <p>The college provides well-maintained hostels with modern amenities, ensuring a comfortable stay for students. The cafeteria offers a variety of nutritious meals at affordable prices. A dedicated medical center is available on campus with emergency care services, and professional counselors provide mental health support.</p>
+            </div>
+
+            <div class="card">
+                <div class="carousel">
+                    <img src="{% static 'clg/images/amenities/crick1.jpeg' %}" alt="Student Support Services" class="active">
+                    <img src="{% static 'clg/images/amenities/crick3.jpeg' %}" alt="Academic Facilities">
+                    <img src="{% static 'clg/images/amenities/carrom.jpg' %}" alt="Academic Facilities">
+                    <img src="{% static 'clg/images/amenities/game.jpg' %}" alt="Academic Facilities">
+                   <button class="nav-btn prev">&#10094;</button>
+                   <button class="nav-btn next">&#10095;</button>
+                </div>
+                <h2>Sports & Recreation</h2>
+                <p>Students can engage in a wide range of sports, including football, basketball, cricket, badminton, and more. The campus has a fully-equipped gym, jogging tracks, and yoga centers to promote a healthy lifestyle. Recreational zones with gaming facilities provide a great place for relaxation.</p>
+            </div>
+
+            <div class="card">
+                <div class="carousel">
+                    <img src="{% static 'clg/images/amenities/digital1.avif' %}" alt="Student Support Services" class="active">
+                    <img src="{% static 'clg/images/amenities/digital2.jpg' %}" alt="Academic Facilities">
+                    <img src="{% static 'clg/images/amenities/digital3.jpg' %}" alt="Academic Facilities">
+                    <img src="{% static 'clg/images/amenities/digital4.jpg' %}" alt="Academic Facilities">
+                    <button class="nav-btn prev">&#10094;</button>
+                    <button class="nav-btn next">&#10095;</button>
+                </div>
+                <h2>Technology & Digital Services</h2>
+                <p>Our campus is Wi-Fi enabled, allowing students to access high-speed internet anywhere. The e-learning portal provides online courses, assignments, and exam materials. High-tech AI and coding labs help students stay updated with the latest technological trends.</p>
+            </div>
+
+            <div class="card">
+                <div class="carousel">
+                    <img src="{% static 'clg/images/amenities/bus1.jpeg' %}" alt="Student Support Services" class="active">
+                    <img src="{% static 'clg/images/amenities/bus2.jpg' %}" alt="Academic Facilities">
+                    <button class="nav-btn prev">&#10094;</button>
+                    <button class="nav-btn next">&#10095;</button>
+                </div>
+                <h2>Transport & Security</h2>
+                <p>College transport services ensure a safe and convenient commute for students and staff, covering multiple routes. The campus is secured with 24/7 CCTV surveillance and security personnel to ensure safety for all.</p>
+            </div>
+
+            <div class="card">
+                <div class="carousel">
+                    <img src="{% static 'clg/images/amenities/audi1.jpg' %}" alt="Student Support Services" class="active">
+                    <img src="{% static 'clg/images/amenities/audi2.jpg' %}" alt="Academic Facilities">
+                    <button class="nav-btn prev">&#10094;</button>
+                    <button class="nav-btn next">&#10095;</button>
+                </div>
+                <h2>Community Spaces</h2>
+                <p>The college has modern auditoriums and seminar halls for academic and cultural events. Student clubs cater to various interests, including technology, arts, music, and literature. Green spaces and eco-friendly initiatives promote sustainability and a clean environment.</p>
+            </div>
+        </div>
+    </div>
+
+<script>
+    document.querySelectorAll('.carousel').forEach(carousel => {
+        let images = carousel.querySelectorAll('img');
+        let index = 0;
+
+        // Ensure the first image is active
+        images[0].classList.add('active');
+
+        const updateImages = () => {
+            images.forEach(img => img.classList.remove('active'));
+            images[index].classList.add('active');
+        };
+
+        carousel.querySelector('.prev').addEventListener('click', () => {
+            index = (index - 1 + images.length) % images.length;
+            updateImages();
+        });
+
+        carousel.querySelector('.next').addEventListener('click', () => {
+            index = (index + 1) % images.length;
+            updateImages();
+        });
+    });
+</script>
+
+{% endblock %}

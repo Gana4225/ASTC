@@ -49,7 +49,7 @@
     border-radius: 8px;
     padding: 10px 0;
     z-index: 1001;
-    max-height: 200px; /* Set max height for scroll effect */
+    max-height: 300px; /* Set max height for scroll effect */
     overflow-y: auto; /* Enable vertical scrolling */
 }
 

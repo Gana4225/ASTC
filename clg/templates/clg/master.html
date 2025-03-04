@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'clg/css/master.css' %}">
     {% block extra_css %}{% endblock %}
-    {% block title %}<title></title>{% endblock %}
+    {% block title %}<title>Avanthi's St. Theresa College</title>{% endblock %}
      <link rel="icon" type="image/png" href="{% static 'clg/images/ASTClogo.jpg' %}">
 </head>
 <body style="margin:0px;">
@@ -15,10 +15,13 @@
             <div class="nav-links">
                 <a href="{% url 'realhome' %}">Home</a>
                 <a href="{% url 'dashboard' %}">Dashboard</a>
-                <a href="#services">Services</a>
                 <a href="{% url 'contact' %}">Contact</a>
                 <a href="{% url 'admissionprocess' %}">Admissions</a>
                 <a href="{% url 'departments' %}">Departments</a>
+                <a href="{% url 'placements' %}">Placements</a>
+                <a href="{% url 'activities' %}">Activities</a>
+                <a href="{% url 'research' %}">Researches</a>
+                <a href="{% url 'amenities' %}">Amenities</a>
                 <a href="{% url 'about' %}">About</a>
                 <a href="{% url 'admin:index' %}">Admin</a>
                 {% if user %}
@@ -62,11 +65,42 @@
             }
     </script>
 
+
+
+
+
+
 {% block content %}
 
     <link rel="stylesheet" href="{% static 'clg/css/realhome.css' %}">
-    <title>Avanthi's St. Theresa College</title>
+
 <div class="main">
+
+
+
+    <nav id="navi">
+        <a href="{% url 'realhome' %}">Home</a>
+                <a href="{% url 'dashboard' %}">Dashboard</a>
+                <a href="{% url 'contact' %}">Contact</a>
+                <a href="{% url 'admissionprocess' %}">Admissions</a>
+                <a href="{% url 'departments' %}">Departments</a>
+                <a href="{% url 'placements' %}">Placements</a>
+                <a href="{% url 'activities' %}">Activities</a>
+                <a href="{% url 'research' %}">Researches</a>
+                <a href="{% url 'amenities' %}">Amenities</a>
+                <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'admin:index' %}">Admin</a>
+                {% if user %}
+                <a href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                <a href="{% url 'login' %}">LogIn</a>
+                {% endif %}
+
+    </nav>
+
+
+
+
 
     <div class="hero-container">
         <header class="hero">
@@ -110,13 +144,16 @@ function resizeImage() {
 </section>
 
     <div class="img-container">
+
+        <div class="image-box">
+            <img src="{% static 'clg/images/oldcollege.jpg' %}" alt="coll.jpg">
+        </div>
+
         <div class="image-box">
             <img src="{% static 'clg/images/coll.jpg' %}" alt="coll.jpg">
         </div>
+
     </div>
-
-
-
 
     <!-- Additional 6-line content between images -->
     <div class="mid-content">
@@ -183,6 +220,11 @@ function resizeImage() {
 
 {% endblock %}
 
+
+
+
+
+
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-about">
@@ -194,8 +236,7 @@ function resizeImage() {
             <ul>
                 <li><a href="{% url 'dashboard' %}">Home</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-                 <li><a href="{% url 'admissionprocess' %}">Admissions</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
                 {% if user %}
                 <li><a href="{% url 'logout' %}">Logout</a></li>
