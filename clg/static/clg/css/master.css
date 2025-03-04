@@ -3,11 +3,29 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #343a40; /* Dark gray background */
-    color: #ffffff; /* White text */
-    position: relative;
+    padding: 12px 20px;
+    background:#343a40;
+    color: #ffffff;
+    position: sticky;
+    top: 0;
+
     z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    transition: all 0.3s ease-in-out;
+    animation: slideDown 0.6s ease-out;
+}
+
+/* Slide down animation */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* Logo */

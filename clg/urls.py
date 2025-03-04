@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import *
 from django.conf import settings
+from django.contrib import admin
 from django.conf.urls.static import static
 
 
@@ -19,7 +20,9 @@ urlpatterns = [
     path("contact/", contact, name="contact"),
     path("addmissionprocess/", admission, name="admissionprocess"),
     path("departments/", departments, name="departments"),
-    path("aadmin/", ladmin, name="aadmin"),
+    path("placements/",placements,name="placements"),
+    path("activities/",activities,name="activities"),
+
 
 ]
 

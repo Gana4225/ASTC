@@ -19,7 +19,7 @@ def cnfm(request):
     if request.method == "POST":
         fee_type = int(request.POST.get('type'))
         user = request.session.get("user_id")
-        data = Payments.objects.get(id=1)
+        data = Payments.objects.get(id=3)
         rdata = Re.objects.get(user_name=user)
         sdata = Student.objects.get(roll_number=rdata.roll_number.roll_number)
         if fee_type == 1:
@@ -47,7 +47,7 @@ def cnfm(request):
             return render(request, "payments/pdetails.html",
                           {"payment": payments, "sdata": sdata, "pur": purpose, "p": p, "amount": amount})
 
-        spedata = SpecialFee.objects.get(id=1)
+        spedata = SpecialFee.objects.get(id=2)
 
 
         if fee_type == 4:

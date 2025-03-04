@@ -20,7 +20,7 @@ class Student(models.Model):
     regulation = models.ForeignKey('Regulation', on_delete=models.CASCADE)
     mobile_number = models.CharField(max_length=20, null=False)
     email = models.EmailField(max_length=250, unique=True, null=False)
-    image = models.ImageField(upload_to="profile_images",null=True, blank=True,default='default-profile.png')
+    image = models.ImageField(upload_to="profile_images",null=True, blank=True)
 
     def __str__(self):
         return f"{self.roll_number} {self.name}"
@@ -50,3 +50,16 @@ class Course(models.Model):
 class mids(models.Model):
     subject_code = models.CharField(max_length=20, null=False)
 
+
+
+class Placements(models.Model):
+    name = models.CharField(max_length=500,null=False)
+    roll_number = models.ForeignKey(Student, on_delete=models.CASCADE)
+    company = models.CharField(max_length=1000,null=False)
+    package = models.IntegerField(default=0,null=False)
+    image = models.ImageField(upload_to="placements/",blank=True,null=True)
+    batch = models.CharField(max_length=100,null=True,default="")
+    department = models.ForeignKey(Department, on_delete=models.CASCADE, default="")
+
+    def __str__(self):
+        return f"{self.name}"

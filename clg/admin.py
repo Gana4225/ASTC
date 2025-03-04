@@ -26,6 +26,9 @@ class StudentAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 class tt(admin.ModelAdmin):
     list_display = ['department', 'roll_number']
 
+class plc(admin.ModelAdmin):
+    list_display = ["roll_number","name","department","company"]
+
 
 
 admin.site.register(Regulation, Reg)
@@ -33,3 +36,11 @@ admin.site.register(Department, Dept)
 admin.site.register(Re,Regs)
 admin.site.register(Student, StudentAdmin)
 admin.site.register(test, tt)
+admin.site.register(Course)
+admin.site.register(mids)
+admin.site.register(Placements,plc)
+
+
+admin.site.site_header = "ASTC ADMINISTRATION"
+admin.site.site_title = "ASTC Admin Panel"
+admin.site.index_title = "Welcome to ASTC Admin Dashboard"

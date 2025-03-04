@@ -1,0 +1,99 @@
+/* Full-Screen Animated Background */
+body {
+    background: black;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+/* Gradient Navbar */
+#header {
+    background: linear-gradient(90deg, #ff007f, #ff7f00, #7fff00, #00ff7f);
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Sidebar Styling */
+#nav-sidebar {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+#nav-sidebar a {
+    color: white;
+    font-weight: bold;
+}
+
+#nav-sidebar a:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+}
+
+/* Login Page */
+.login-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
+    text-align: center;
+    margin: 100px auto;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+button {
+    background: #ff007f;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff7f00;
+    transform: scale(1.1);
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
+th {
+    background: #ff007f;
+    color: white;
+}
+
+tr:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Hover Effects */
+a {
+    transition: 0.3s;
+}
+
+a:hover {
+    color: #ff7f00;
+}

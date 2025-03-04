@@ -1,0 +1,22 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASTC ADMINISTRATION</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom_admin.css' %}">
+    <script src="{% static 'js/custom_admin.js' %}"></script>
+</head>
+<body>
+    <header id="admin-header">
+        <h1><a href="{% url 'admin:index' %}">ASTC ADMINISTRATION</a></h1>
+    </header>
+
+    <div class="admin-container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        <p>© 2025 ASTC Admin Panel</p>
+    </footer>
+</body>
+</html>

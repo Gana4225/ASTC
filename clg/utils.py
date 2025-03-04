@@ -135,6 +135,7 @@ def handle_registration(request):
 
             # Generate OTP and store in session
             otp = str(random.randint(100000, 999999))
+            print(f"otp generated : {otp}")
             request.session.update({
                 'otp': otp,
                 'otp_timestamp': now().timestamp(),

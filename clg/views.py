@@ -1,21 +1,26 @@
 from django.views.decorators.csrf import csrf_exempt
 from .utils import *
+from payments.models import *
+from clg.models import *
+from django.shortcuts import render, get_object_or_404, redirect
+from django.apps import apps
+from django.forms import modelform_factory
 from django.http import JsonResponse
-
 
 
 def realhome(request):
     user = request.session.get("user_id")
-    return render(request, "clg/master.html", {"user":user})
+    return render(request, "clg/master.html", {"user": user})
+
 
 def home(request):
     if not check_user_logged_in(request):
         return render(request, 'clg/login.html')
     return redirect('dashboard')
 
+
 @csrf_exempt
 def log(request):
-
     if request.method == "POST":
         user = request.POST['username']
         password = request.POST['password']
@@ -45,6 +50,7 @@ def log(request):
     else:
         return redirect('dashboard')
 
+
 # view for logout
 def clogout(request):
     try:
@@ -58,12 +64,11 @@ def clogout(request):
 
     return redirect('realhome')
 
+
 # view for user registration
 
 def reg(request):
-
     if request.method == 'GET':
-
         return handle_get_request(request)
 
     if request.method == 'POST':
@@ -79,42 +84,30 @@ def reg(request):
     return HttpResponse("<h1>Invalid request method</h1>")
 
 
-
-
-
 def dashboard(request):
-
     if not check_user_logged_in(request):
-
         return redirect('realhome')
 
-
     return render(request, 'clg/dashboard.html')
-
 
 
 def about(request):
     return render(request, 'clg/about.html')
 
 
-
 def pay(request):
-
     if not check_user_logged_in(request):
-
         return redirect('realhome')
 
     return redirect('second/')
 
 
-
 def otp(request):
-
     return render(request, 'clg/otp.html')
+
 
 def stdprofile(request):
     if not check_user_logged_in(request):
-
         return redirect('realhome')
 
     try:
@@ -124,26 +117,26 @@ def stdprofile(request):
 
         if not c.image:
             c.image = None  # You can set a default image URL if needed
-
-
         return render(request, 'clg/stdprofile.html', {'student': c, 'a': a})
     except Exception as e:
         print(e)
         return HttpResponse("image error")
 
+
 def update_profile(request):
     if not check_user_logged_in(request):
-
         return redirect('realhome')
 
     return updatepf(request)
+
+
 def dd(request):
     return render(request, 'clg/login.html')
 
 
 def contact(request):
-
     return render(request, "clg/contact.html")
+
 
 def admission(request):
     return render(request, "clg/admissionprocess.html")
@@ -152,9 +145,12 @@ def admission(request):
 def departments(request):
     return render(request, "clg/departments.html")
 
-def ladmin(request):
-    if not check_user_logged_in(request):
 
-        return redirect('realhome')
+def placements(request):
+    data = Placements.objects.all()
+    print(data)
+    return render(request, "clg/placements.html", {"data":data})
 
-    return HttpResponse("Admin page")
+
+def activities(request):
+    return render(request, "clg/activities.html")

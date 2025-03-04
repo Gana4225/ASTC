@@ -1,0 +1,298 @@
+{% extends "clg/master.html" %}
+{% load static %}
+{% block content %}
+
+    <style>
+
+
+        body {
+            background: linear-gradient(to right, #f0faff, #d9f3ff);
+            text-align: center;
+            padding: 0px;
+            margin:0px;
+
+
+        }
+
+        .header {
+            background: linear-gradient(135deg, #004aad, #0096ff);
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .batch-banner {
+            background: linear-gradient(135deg, #ff6f00, #ff9500);
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 15px;
+            margin: 20px auto;
+            display: inline-block;
+            border-radius: 8px;
+            width:90%;
+        }
+
+        .placements-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: auto;
+            margin-bottom:50px;
+        }
+
+        .placement-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+            width: 250px;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .placement-card:hover {
+            transform: scale(1.08);
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .placement-card img {
+            width: 100%;
+            height:200;
+            max-height: 200px;
+            object-fit: scale-down;
+            background:gray;
+        }
+
+
+        .placement-info {
+            padding: 15px;
+        }
+
+        .placement-info h3 {
+            color: #004aad;
+            font-size: 20px;
+        }
+
+        .company-slider {
+            overflow: hidden;
+            white-space: nowrap;
+            margin-top: 50px;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .company-row {
+            display: flex;
+            animation: scrollLeft 10s linear infinite;
+        }
+
+        .company-row img {
+            height: 60px;
+            margin: 0 20px;
+        }
+
+        @keyframes scrollLeft {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .placement-card {
+                width: 70%;
+            }
+
+            .company-row img {
+                height: 50px;
+            }
+        }
+.thisbody{
+
+
+ margin-top:1rem;
+ padding:10px;
+}
+
+
+        /* about placements */
+
+
+        .aboutplacements {
+    background: linear-gradient(135deg, #004aad, #0096ff);
+    color: white;
+    text-align:left;
+    padding: 40px;
+    margin: 30px auto;
+    margin-top:2rem;
+    margin-bottom:4rem;
+    width:90%;
+    border-radius: 12px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.aboutplacements:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.aboutplacements h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align:center;
+    letter-spacing: 1px;
+}
+
+.aboutplacements p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .aboutplacements {
+        font-size: 16px;
+        padding: 20px;
+    }
+    .aboutplacements h2 {
+        font-size: 22px;
+    }
+    .aboutplacements p {
+        font-size: 16px;
+    }
+}
+
+    </style>
+
+<div class="thisbody">
+    <div class="header">Placements at Avanthi's St. Theresa College, Garividi</div>
+    <div class="batch-banner">Placements - Batch 2024 🎓</div>
+    <div class="placements-container">
+    {% for i in data %}
+        <div class="placement-card">
+            <img src="{{i.image.url}}" alt="Student Image">
+            <div class="placement-info">
+                <h3>{{i.name}}</h3>
+                <h3>{{i.roll_number.roll_number}}</h3>
+                <h3>{{i.department}}</h3>
+                <strong>
+                    <p>Selected in: {{i.company}}</p>
+                    <p>Package: ₹{{i.package}} LPA</p>
+                </strong>
+            </div>
+        </div>
+    {% endfor %}
+<!--
+        <div class="placement-card">
+            <img src="{% static 'clg/images/placements/pc.jpg' %}" alt="Student Image">
+            <div class="placement-info">
+                <h3>John Doe</h3>
+                <p>Selected in: TCS</p>
+                <p>Package: ₹6 LPA</p>
+            </div>
+        </div>
+
+        <div class="placement-card">
+            <img src="{% static 'clg/images/placements/pc.jpg' %}" alt="Student Image">
+            <div class="placement-info">
+                <h3>John Doe</h3>
+                <p>Selected in: TCS</p>
+                <p>Package: ₹6 LPA</p>
+            </div>
+        </div>
+
+        <div class="placement-card">
+            <img src="{% static 'clg/images/placements/pc.jpg' %}" alt="Student Image">
+            <div class="placement-info">
+                <h3>John Doe</h3>
+                <p>Selected in: TCS</p>
+                <p>Package: ₹6 LPA</p>
+            </div>
+        </div>
+
+        <div class="placement-card">
+            <img src="{% static 'clg/images/placements/pc.jpg' %}" alt="Student Image">
+            <div class="placement-info">
+                <h3>John Doe</h3>
+                <p>Selected in: TCS</p>
+                <p>Package: ₹6 LPA</p>
+            </div>
+        </div>
+
+        <div class="placement-card">
+            <img src="{% static 'clg/images/placements/pc.jpg' %}" alt="Student Image">
+            <div class="placement-info">
+                <h3>John Doe</h3>
+                <p>Selected in: TCS</p>
+                <p>Package: ₹6 LPA</p>
+            </div>
+        </div>
+
+        <div class="placement-card">
+            <img src="{% static 'clg/images/placements/pc.jpg' %}" alt="Student Image">
+            <div class="placement-info">
+                <h3>John Doe</h3>
+                <p>Selected in: TCS</p>
+                <p>Package: ₹6 LPA</p>
+            </div>
+        </div>
+        -->
+
+    </div>
+
+
+      <div class="aboutplacements">
+    <h2>About Avanthi's St. Theresa College, Garividi</h2>
+    <p>
+        Established with a vision of academic excellence, Avanthi's St. Theresa College, located in
+        Garividi, is one of the most prestigious institutions in the region. Our college is dedicated
+        to providing quality education, fostering innovation, and shaping the careers of young minds.
+    </p>
+    <p>
+        With strong industry connections and an emphasis on skill development, we have partnered
+        with top multinational companies to offer exceptional placement opportunities. Our students
+        are consistently placed in leading organizations such as TCS, Wipro, Infosys, Amazon, Google,
+        and many more.
+    </p>
+    <p>
+        At Avanthi's St. Theresa College, we believe in holistic education, combining
+        academic excellence with real-world exposure to create future-ready professionals.
+        Join us and be a part of a thriving learning community!
+    </p>
+</div>
+
+
+    <div class="company-slider">
+        <h1 style="color:red;">Placements Offered In</h1>
+        <div class="company-row">
+            <img src="{% static 'clg/images/placements/tcs.png' %}" alt="TCS">
+            <img src="{% static 'clg/images/placements/wipro.png' %}" alt="Wipro">
+            <img src="{% static 'clg/images/placements/infosys.jpg' %}" alt="infosys">
+            <img src="{% static 'clg/images/placements/amazon.png' %}" alt="Amazon">
+            <img src="{% static 'clg/images/placements/google.png' %}" alt="Google">
+            <img src="{% static 'clg/images/placements/paypal.png' %}" alt="paypal">
+            <img src="{% static 'clg/images/placements/grow.png' %}"alt="Groww">
+            <img src="{% static 'clg/images/placements/ibm.jpg' %}" alt="IBM">
+            <img src="{% static 'clg/images/placements/acen.jpg' %}" alt="Accenture">
+            <img src="{% static 'clg/images/placements/hcl.png' %}" alt="HCL">
+        </div>
+    </div>
+</div>
+{% endblock %}

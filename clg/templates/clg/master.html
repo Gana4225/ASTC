@@ -8,7 +8,7 @@
     {% block title %}<title></title>{% endblock %}
      <link rel="icon" type="image/png" href="{% static 'clg/images/ASTClogo.jpg' %}">
 </head>
-<body style="margin:0px">
+<body style="margin:0px;">
     <nav class="navbar">
         <a href="{% url 'dashboard' %}" class="logo" style="color:white"> ASTC </a>
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
@@ -19,8 +19,8 @@
                 <a href="{% url 'contact' %}">Contact</a>
                 <a href="{% url 'admissionprocess' %}">Admissions</a>
                 <a href="{% url 'departments' %}">Departments</a>
-                <a href="{% url 'aadmin' %}">Admin</a>
                 <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'admin:index' %}">Admin</a>
                 {% if user %}
                 <a href="{% url 'logout' %}">Logout</a>
                 {% else %}
@@ -28,12 +28,13 @@
                 {% endif %}
 
             </div>
-            <!-- Time Display Div inside navbar -->
+            <!-- Time Display Div inside navbar
         <div id="timeDisplay" class="time-display" style="display: none;"></div>
+        -->
     </nav>
 
     <script>
-
+/*
             function updateTime() {
                 var options = { timeZone: 'Asia/Kolkata', hour12: true };
                 var currentTime = new Date().toLocaleString('en-IN', options);
@@ -53,6 +54,7 @@
             window.addEventListener('resize', checkTimeDisplay);
             window.addEventListener('load', checkTimeDisplay);
             setInterval(updateTime, 1000);
+            */
 
             function toggleMenu() {
                 const navLinks = document.querySelector('.nav-links');
@@ -64,12 +66,39 @@
 
     <link rel="stylesheet" href="{% static 'clg/css/realhome.css' %}">
     <title>Avanthi's St. Theresa College</title>
+<div class="main">
 
     <div class="hero-container">
         <header class="hero">
-            <img src="{% static 'clg/images/stt.png' %}" alt="Avanthi's St. Theresa College">
+            <img src="{% static 'clg/images/stt.png' %}" alt="Avanthi's St. Theresa College"
+            style="width:700px">
         </header>
     </div>
+
+
+
+
+   <script>
+       window.addEventListener("load", resizeImage);
+window.addEventListener("resize", resizeImage);
+
+function resizeImage() {
+    let img = document.querySelector(".hero img");
+    let screenWidth = window.innerWidth;
+
+    // Set the image width to a percentage of the screen width
+    img.style.width = screenWidth * 0.8 + "px"; // Adjust the multiplier as needed
+
+    // Optionally, limit the max and min width
+    img.style.maxWidth = "90%"; // Prevent it from becoming too large
+    img.style.minWidth = "250px"; // Ensure it doesn't become too small
+}
+
+   </script>
+
+
+
+
 
 <section class="intro">
     <p>
@@ -80,10 +109,15 @@
     </p>
 </section>
 
-<!-- Image Section -->
-<div class="image-section">
-    <img src="{% static 'clg/images/oldcollege.jpg' %}" alt="Avanthi's St. Theresa College"><br>
-</div>
+    <div class="img-container">
+        <div class="image-box">
+            <img src="{% static 'clg/images/coll.jpg' %}" alt="coll.jpg">
+        </div>
+    </div>
+
+
+
+
     <!-- Additional 6-line content between images -->
     <div class="mid-content">
         <p>
@@ -111,11 +145,6 @@
             meaningfully to society.
         </p>
     </div>
-
-<div class="image-section">
-    <img src="{% static 'clg/images/coll.jpg' %}" alt="Campus View">
-</div>
-
 
 <section class="content">
     <p>
@@ -150,6 +179,7 @@
         the college's dedication to excellence.
     </p>
 </section>
+    </div>
 
 {% endblock %}
 
