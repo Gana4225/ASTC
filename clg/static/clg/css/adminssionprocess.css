@@ -129,7 +129,7 @@ footer p {
 
 /* Side Panel */
 .side-panel {
-    width: 300px;
+    width: 200px;
     height: 100vh;
     background: #f4f4f4;
     padding: 10px;
@@ -173,6 +173,8 @@ footer p {
     width: 100%;
     display: block;
     border-radius: 10px;
+    margin-top:1rem;
+    margin-bottom:2rem;
     transition: transform 0.3s ease-in-out;
 }
 

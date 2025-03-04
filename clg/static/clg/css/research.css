@@ -19,22 +19,7 @@
         header p {
             font-size: 1.2em;
         }
-        nav {
-            background-color: #222;
-            padding: 10px 0;
-            text-align: center;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            display: inline-block;
-            font-size: 1.1em;
-        }
-        nav a:hover {
-            background-color: #0073e6;
-            border-radius: 5px;
-        }
+
         .container {
             width: 85%;
             margin: 20px auto;

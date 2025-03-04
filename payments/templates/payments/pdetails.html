@@ -41,13 +41,13 @@
 <script>
     document.getElementById("customPayButton").addEventListener("click", function () {
         var options = {
-            "key": "rzp_test_F4KAIVewl3a2UP",  // Your Razorpay Key
+            "key": "rzp_live_vFZrNfs1Qu9cx4",  // Your Razorpay Key
             "amount": "{{ amount }}",  // Amount in paise (backend should pass `amount * 100`)
             "currency": "INR",
             "order_id": "{{ payment.order_id }}",  // Corrected Order ID reference
             "name": "ASTC",
             "description": "{{ pur }}",  // Corrected Purpose reference
-            "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'payments/images/terracotta_icon.jpeg' %}",
+            "image": "{% static 'clg/images/ASTClogo.jpg' %}",
             "theme": { "color": "lightgreen" },
             "handler": function (response) {
                 // Store response values in hidden fields

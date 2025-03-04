@@ -99,6 +99,24 @@
     </nav>
 
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    function toggleNavbar() {
+        let navbar = document.getElementById("navi");
+        if (window.innerWidth < 668) {
+            navbar.style.display = "none"; // Hide navbar on small screens
+        }
+    }
+
+    // Run on page load
+    toggleNavbar();
+
+    // Run on window resize
+    window.addEventListener("resize", toggleNavbar);
+});
+
+    </script>
+
 
 
 

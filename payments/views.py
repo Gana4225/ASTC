@@ -6,7 +6,7 @@ from clg.models import *
 
 
 def payments(amount):
-    client = razorpay.Client(auth=("rzp_test_F4KAIVewl3a2UP", "hPfWC0HrQlkaxHtaWtSUllrF"))
+    client = razorpay.Client(auth=("rzp_live_vFZrNfs1Qu9cx4", "B8zpbYSMCee3yDJarwOuyqH8"))
     payment = client.order.create({'amount': amount, 'currency': 'INR', 'payment_capture': '1'})
     return payment
 
@@ -58,6 +58,14 @@ def cnfm(request):
             return render(request, "payments/pdetails.html",
                           {"payment": payments, "sdata": sdata, "pur": purpose, "p": p, "amount": amount})
 
+        if fee_type == 5:
+            p = amount = 5 * 100
+            p = p // 100
+            purpose = "Testing FEE"
+            payments(amount)
+            return render(request, "payments/pdetails.html",
+                          {"payment": payments, "sdata": sdata, "pur": purpose, "p": p, "amount": amount})
+
         return HttpResponse("Invalid request")
 
     return HttpResponse("Invalid request please try again")
@@ -66,7 +74,7 @@ def cnfm(request):
 def pay(request):
    if request.method == "POST":
        pid = request.POST.get('payment_id')
-       client = razorpay.Client(auth=("rzp_test_F4KAIVewl3a2UP", "hPfWC0HrQlkaxHtaWtSUllrF"))
+       client = razorpay.Client(auth=("rzp_live_vFZrNfs1Qu9cx4", "B8zpbYSMCee3yDJarwOuyqH8"))
        payment_status = client.payment.fetch(pid)
        oid = payment_status['description']
        ccc = payment_status["acquirer_data"]
